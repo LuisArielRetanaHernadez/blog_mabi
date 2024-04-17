@@ -33,3 +33,12 @@ a{
   background-color: var(--bg);
   color: var(--text-color);
 }
+
+.wrapper {
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 80px;
+  padding-right: 80px;
+  background-color: rebeccapurple;
+}
