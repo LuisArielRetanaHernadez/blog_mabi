@@ -62,6 +62,8 @@ a{
 
   .wrapper {
     max-width: 768px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
   
 }
