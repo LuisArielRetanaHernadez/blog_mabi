@@ -67,3 +67,11 @@ a{
   }
   
 }
+
+@media screen and (max-width: 768px) {
+
+  .wrapper {
+    max-width: 640px;
+  }
+  
+}
