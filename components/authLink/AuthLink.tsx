@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import style from "./authLink.module.css"
+
 const AuthLink = () => {
   const status:string = "notauthenticated"
   return <>
@@ -8,7 +10,7 @@ const AuthLink = () => {
     ) : (
       <>
         <Link href="/write">Write</Link>
-        <span>Logout</span>
+        <span className={style.link}>Logout</span>
       </>
     )}
   </>;
