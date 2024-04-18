@@ -4,10 +4,11 @@ import style from "./navbar.module.css"
 import Image from "next/image"
 import Link from "next/link"
 
-import facebook from "../../assets/socials/facebook.png"
-import instagram from "../../assets/socials/instagram.png"
-import tiktok from "../../assets/socials/tiktok.png"
-import youtube from "../../assets/socials/youtube.png"
+import facebook from "../../public/socials/facebook.png"
+import instagram from "../../public/socials/instagram.png"
+import tiktok from "../../public/socials/tiktok.png"
+import youtube from "../../public/socials/youtube.png"
+
 import AuthLink from "../authLink/AuthLink"
 import ThemeToggle from "../themeToggle/ThemeToggle"
 
