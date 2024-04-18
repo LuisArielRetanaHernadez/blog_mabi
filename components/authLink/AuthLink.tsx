@@ -5,7 +5,7 @@ import style from "./authLink.module.css"
 const AuthLink = () => {
   const status:string = "notauthenticated"
   return <>
-    {status === "authenticated" ? (
+    {status === "notauthenticated" ? (
       <Link href="/login">login</Link>
     ) : (
       <>
