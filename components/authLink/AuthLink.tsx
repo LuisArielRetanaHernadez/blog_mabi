@@ -17,7 +17,7 @@ const AuthLink = () => {
         <span className={style.link}>Logout</span>
       </>
     )}
-    <div className={style.burger}>
+    <div className={style.burger} onClick={() => setOpen(prev => !prev)}>
       <div className={style.line}></div>
       <div className={style.line}></div>
       <div className={style.line}></div>
