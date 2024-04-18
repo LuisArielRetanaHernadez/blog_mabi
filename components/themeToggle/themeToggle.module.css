@@ -8,3 +8,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.ball {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+}
