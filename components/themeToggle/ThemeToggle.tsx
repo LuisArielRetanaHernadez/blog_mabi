@@ -14,7 +14,11 @@ const ThemeToggle = () => {
   const { theme, toggle } = useContext(ThemeContext)
 
   return (
-    <div className={style.container} onClick={toggle}>
+    <div className={style.container} onClick={toggle}
+    style={theme === "dark" 
+      ? { backgroundColor: "white" } 
+      : { backgroundColor: "#0f172a" }}
+    >
       <Image src={moon} alt="mon" width={14} height={14}/>
 
       <div className={style.ball} style={
