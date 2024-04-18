@@ -8,9 +8,18 @@
 .social {
   display: flex;
   gap: 10px;
+  flex: 1;
+}
+
+.logo {
+  font-size: 36px;
+  font-weight: bolder;
+  flex: 1;
+  text-align: center;
 }
 
 .links {
   display: flex;
   gap: 20px;
+  flex: 1;
 }
