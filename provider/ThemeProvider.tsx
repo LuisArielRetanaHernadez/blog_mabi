@@ -7,7 +7,7 @@ const ThemeProvider = ({ children }: Readonly<{ children: React.ReactNode }>) =>
   const theme = useContext(ThemeContext)
 
   return (
-    <div className={theme}>ThemeProvider</div>
+    <div className={theme}>{ children }</div>
   )
 }
 
