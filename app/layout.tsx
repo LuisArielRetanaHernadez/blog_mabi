@@ -8,6 +8,7 @@ import NavBar from "@/components/navbar/NavBar";
 import Footer from "@/components/footer/Footer";
 
 import { ThemeContextProvider } from "@/context/ThemeContext";
+import ThemeProvider from "@/provider/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,13 +26,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeContextProvider>
-          <div className="container">
+          <ThemeProvider>
+            <div className="container">
             <div className="wrapper">
               <NavBar />
               {children}
               <Footer />
             </div>
-          </div>
+            </div>
+          </ThemeProvider>
         </ThemeContextProvider>
       </body>
     </html>
