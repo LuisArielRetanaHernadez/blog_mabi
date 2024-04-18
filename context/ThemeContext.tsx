@@ -11,6 +11,7 @@ export const ThemeContext = createContext<{
 })
 
 const getFormLocalStroge = (): ThemeContextType => {
+  if (typeof window === "undefined") return "light"
   const theme = localStorage.getItem('theme') as ThemeContextType
   return theme || "light"
 }
