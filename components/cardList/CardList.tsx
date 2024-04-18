@@ -1,6 +1,10 @@
+import Pagination from "../pagination/Pagination"
+
 const CardList = () => {
   return (
-    <div>CardList</div>
+    <div>
+      <Pagination />
+    </div>
   )
 }
 
