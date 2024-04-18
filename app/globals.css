@@ -12,7 +12,7 @@
   --soft-text-color: #626262;
 }
 
-.dart {
+.dark {
   --bg: #0f172a;
   --text-color: #ddd;
   --soft-bg: #1f273a;
@@ -47,7 +47,6 @@ a{
   margin: auto;
   padding-left: 80px;
   padding-right: 80px;
-  background-color: rebeccapurple;
 }
 
 @media  screen and (max-width: 1536px) {
