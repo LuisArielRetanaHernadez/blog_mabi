@@ -12,6 +12,13 @@
   --soft-text-color: #626262;
 }
 
+.dart {
+  --bg: #0f172a;
+  --text-color: #ddd;
+  --soft-bg: #1f273a;
+  --soft-text-color: #a6a66a;
+}
+
 * {
   padding: 0;
   margin: 0;
