@@ -1,7 +1,14 @@
 "use client"
 import { createContext, useState } from "react";
 type ThemeContextType = "light" | "dark";
-export const ThemeContext = createContext<ThemeContextType>("light")
+
+export const ThemeContext = createContext<{
+  theme: ThemeContextType,
+  toggle: () => void
+}>({
+  theme: "light",
+  toggle: () => {}
+})
 
 const getFormLocalStroge = (): ThemeContextType => {
   const theme = localStorage.getItem('theme') as ThemeContextType
@@ -10,9 +17,11 @@ const getFormLocalStroge = (): ThemeContextType => {
 
 export const ThemeContextProvider = ({ children }: Readonly<{children: React.ReactNode}>) => {
   const [theme, setTheme] = useState<ThemeContextType>(getFormLocalStroge())
-
+  const toggle = () => {
+    setTheme(theme === "light" ? "dark" : "light")
+  }
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext.Provider value={{theme, toggle}}>
       {children}
     </ThemeContext.Provider>
   )
