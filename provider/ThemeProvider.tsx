@@ -7,7 +7,7 @@ const ThemeProvider = () => {
   const theme = useContext(ThemeContext)
 
   return (
-    <div>ThemeProvider</div>
+    <div className={theme}>ThemeProvider</div>
   )
 }
 
