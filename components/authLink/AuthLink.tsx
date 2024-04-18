@@ -10,10 +10,10 @@ const AuthLink = () => {
   const status:string = "notauthenticated"
   return <>
     {status === "notauthenticated" ? (
-      <Link href="/login">login</Link>
+      <Link href="/login" className={style.link}>login</Link>
     ) : (
       <>
-        <Link href="/write">Write</Link>
+        <Link href="/write" className={style.link}>Write</Link>
         <span className={style.link}>Logout</span>
       </>
     )}
