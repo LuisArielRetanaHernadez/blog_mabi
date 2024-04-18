@@ -8,6 +8,8 @@ import facebook from "../../assets/socials/facebook.png"
 import instagram from "../../assets/socials/instagram.png"
 import tiktok from "../../assets/socials/tiktok.png"
 import youtube from "../../assets/socials/youtube.png"
+import AuthLink from "../authLink/AuthLink"
+import ThemeToggle from "../themeToggle/ThemeToggle"
 
 const NavBar = () => {
   return (
@@ -20,9 +22,11 @@ const NavBar = () => {
       </div>
       <div className={style.logo}>Lamablog</div>
       <div className={style.links}>
+        <ThemeToggle />
         <Link href="/">Home</Link>
         <Link href="/">About</Link>
         <Link href="/">Contact</Link>
+        <AuthLink />
       </div>
     </div>
   )
