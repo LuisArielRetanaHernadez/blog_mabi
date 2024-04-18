@@ -19,6 +19,13 @@
   --soft-text-color: #a6a66a;
 }
 
+.light {
+  --bg: white;
+  --text-color: black;
+  --soft-bg: #f0f0f0;
+  --soft-text-color: #626262;
+}
+
 * {
   padding: 0;
   margin: 0;
