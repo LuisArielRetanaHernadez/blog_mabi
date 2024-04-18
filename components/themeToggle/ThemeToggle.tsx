@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 
 import sun from "../../public/sun.png"
@@ -5,7 +6,13 @@ import moon from "../../public/moon.png"
 
 import style from "./themeToggle.module.css"
 
+import { useContext } from "react"
+
+import { ThemeContext } from "@/context/ThemeContext"
+
 const ThemeToggle = () => {
+  const { theme } = useContext(ThemeContext)
+
   return (
     <div className={style.container}>
       <Image src={moon} alt="mon" width={14} height={14}/>
