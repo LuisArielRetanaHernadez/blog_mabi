@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 type ThemeContextType = "light" | "dark";
 
 export const ThemeContext = createContext<{
@@ -20,6 +20,11 @@ export const ThemeContextProvider = ({ children }: Readonly<{children: React.Rea
   const toggle = () => {
     setTheme(theme === "light" ? "dark" : "light")
   }
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
   return (
     <ThemeContext.Provider value={{theme, toggle}}>
       {children}
