@@ -49,7 +49,7 @@
 .imageContainer {
   height: 350px;
   flex: 1;
-  position: absolute;
+  position: relative;
 }
 
 .image {
