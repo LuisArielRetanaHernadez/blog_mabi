@@ -17,10 +17,11 @@
 .imgContainer {
   height: 500px;
   flex: 1;
-  position: absolute;
+  position: relative;
 }
 
 .image {
+  height: 100%;
   object-fit: cover;
 }
 

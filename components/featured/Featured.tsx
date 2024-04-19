@@ -1,5 +1,7 @@
 import Image from "next/image"
 
+import p1 from "../../public/p1.jpeg"
+
 import style from "./featured.module.css"
 
 const Featured = () => {
@@ -10,6 +12,7 @@ const Featured = () => {
       </h1>
       <div className={style.post}>
         <div className={style.imgContainer}>
+          <Image src={p1} fill alt="imagen"/>
         </div>
         <div className={style.textContainer}>
          <h1 className={style.postTitle}>adipisicing elit. Pariatur saepe natus cumque amet totam possimus, hic ea neque assumenda, beatae in consequatur dicta dolorem</h1>
