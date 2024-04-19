@@ -25,7 +25,7 @@ const Footer = () => {
           accusantium adipisci saepe delectus voluptates iure quam voluptatem, 
           ex odit illo eum. Numquam!
         </p>
-        <div>
+        <div className={styles.icons}>
           <Image src={facebook} alt='icon facebook' width={30} height={30} />
           <Image src={instagram} alt='icon instagram' width={30} height={30}/>
           <Image src={tiktok} alt='icon tiktok' width={30} height={30}/>
