@@ -9,12 +9,12 @@ import p1 from "../../public/p1.jpeg"
 const Menu = () => {
   return (
     <div className={styles.container}>
-      <h2>{"Waht's hot"}</h2>
-      <h1>Most Popular</h1>
+      <h2 className={styles.subtitle}>{"Waht's hot"}</h2>
+      <h1 className={styles.title}>Most Popular</h1>
       <div className={styles.items}>
         <Link className={styles.item} href="/">
           <div className={styles.imageContainer}>
-            <Image className={styles.image} src={p1} alt="iamge p1"/>
+            <Image className={styles.image} src={p1} alt="iamge p1" fill/>
           </div>
           <div className={styles.textContainer}>
             <span className={`${styles.category} ${styles.travel}`}>Travel</span>

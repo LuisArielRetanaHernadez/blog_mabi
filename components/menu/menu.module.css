@@ -1,3 +1,63 @@
 .container {
   flex: 2;
 }
+
+.subtitle {
+  color: gray;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.title {
+  font-size: 28px;
+}
+
+.items {
+
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.imageContainer {
+  flex: 1;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+
+.image {
+  border: 3px solid lightgray;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 4;
+  gap: 5px;
+}
+
+.category {
+  padding: 3px 8px;
+  border-radius: 18px;
+  font-size: 12px;
+  color: white;
+}
+
+.postTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--soft-text-color);
+}
+
+.detail {
+  font-size: 12px;
+}
+
+.date {
+  color: gray;
+}
