@@ -16,7 +16,7 @@ const Footer = () => {
     <footer className={styles.container}>
       <div className={styles.information}>
         <div className={styles.logo}>
-          <Image src={logo} alt='image logo' />
+          <Image src={logo} alt='image logo' width={50} height={50} />
           <h1 className={styles.logoText}>Lambablog</h1>
         </div>
         <p className={styles.description}>
@@ -26,10 +26,10 @@ const Footer = () => {
           ex odit illo eum. Numquam!
         </p>
         <div>
-          <Image src={facebook} alt='icon facebook' />
-          <Image src={instagram} alt='icon instagram' />
-          <Image src={tiktok} alt='icon tiktok' />
-          <Image src={youtube} alt='icon youtube' />
+          <Image src={facebook} alt='icon facebook' width={30} height={30} />
+          <Image src={instagram} alt='icon instagram' width={30} height={30}/>
+          <Image src={tiktok} alt='icon tiktok' width={30} height={30}/>
+          <Image src={youtube} alt='icon youtube' width={30} height={30}/>
         </div>
       </div>
       <div className={styles.links}>
