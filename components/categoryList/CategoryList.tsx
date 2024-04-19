@@ -11,22 +11,22 @@ import styles from "./categoryList.module.css"
 
 const CategoryList = () => {
   return (
-    <div>
-      <h1>Popular Category</h1>
-      <div className={`${styles.category} ${styles.style}`}>
-        <Link href="/blog?cat=style">
+    <div className={styles.container}>
+      <h1 className={styles.title}>Popular Category</h1>
+      <div className={styles.categories}>
+        <Link className={`${styles.category} ${styles.style}`} href="/blog?cat=style">
           <Image src={style} alt="imagen style" width={32} height={32} />
           style
         </Link>
-        <Link href="/blog?cat=style">
+        <Link className={`${styles.category} ${styles.style}`} href="/blog?cat=style">
           <Image src={fashion} alt="imagen style" width={32} height={32} />
           fashin
         </Link>
-        <Link href="/blog?cat=style">
+        <Link className={`${styles.category} ${styles.style}`} href="/blog?cat=style">
           <Image src={food} alt="imagen style" width={32} height={32} />
           food
         </Link>
-        <Link href="/blog?cat=style">
+        <Link className={`${styles.category} ${styles.style}`} href="/blog?cat=style">
           <Image src={travel} alt="imagen style" width={32} height={32} />
           travel
         </Link>
