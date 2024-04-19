@@ -8,6 +8,7 @@ import p1 from "../../public/p1.jpeg"
 import travel from "../../public/travel.png"
 import culture from "../../public/culture.png"
 import food from "../../public/food.png"
+import fashion from "../../public/fashion.png"
 
 const Menu = () => {
   return (
@@ -34,10 +35,10 @@ const Menu = () => {
 
         <Link className={styles.item} href="/">
           <div className={styles.imageContainer}>
-            <Image className={styles.image} src={travel} alt="iamge p1" fill/>
+            <Image className={styles.image} src={fashion} alt="iamge p1" fill/>
           </div>
           <div className={styles.textContainer}>
-            <span className={`${styles.category} ${styles.travel}`}>p1</span>
+            <span className={`${styles.category} ${styles.fashion}`}>fashion</span>
             <h3 className={styles.postTitle}>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit
             </h3>

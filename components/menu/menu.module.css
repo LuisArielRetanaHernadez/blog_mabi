@@ -56,6 +56,15 @@
 .category.travel {
   background-color: #ff7857;
 }
+.category.culture {
+  background-color: #407858;
+}
+.category.fashion {
+  background-color: #51af58;
+}
+.category.food {
+  background-color: #ff0858;
+}
 
 .postTitle {
   font-size: 18px;
