@@ -1,0 +1,10 @@
+.title {
+  padding: 5px 10px;
+  color: white;
+  text-align: center;
+  background-color: coral;
+}
+.content {
+  display: flex;
+  gap: 50px;
+}
