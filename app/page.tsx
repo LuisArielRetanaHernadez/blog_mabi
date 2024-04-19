@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import "./globals.css";
-
+import styles from "./homepage.module.css";
 // components
 import Featured from "@/components/featured/Featured";
 import CategoryList from "@/components/categoryList/CategoryList";
@@ -14,7 +14,7 @@ export default function Home() {
     <div className="container">
       <Featured />
       <CategoryList />
-      <div className="content">
+      <div className={styles.content}>
         <CardList />
         <Menu />
       </div>
