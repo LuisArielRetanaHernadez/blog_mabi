@@ -37,6 +37,7 @@
   display: flex;
   justify-content: flex-end;
   flex: 1;
+  gap: 100px;
 }
 
 .list {
