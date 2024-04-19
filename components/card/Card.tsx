@@ -9,7 +9,7 @@ const Card = () => {
     <div>
       <div className={styles.posts}>
         <div className={styles.imgContainer}>
-          <Image src={p1} alt="image p1" />
+          <Image src={p1} alt="image p1" fill />
         </div>
         <div className={styles.textContainer}></div>
       </div>
