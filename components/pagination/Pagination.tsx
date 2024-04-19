@@ -1,6 +1,11 @@
+import styles from "./pagination.module.css"
+
 const Pagination = () => {
   return (
-    <div>Pagination</div>
+    <div className={styles.container}>
+      <button className={styles.button}>Preview</button>
+      <button className={styles.button}>Next</button>
+    </div>
   )
 }
 
