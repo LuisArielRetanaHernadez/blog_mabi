@@ -5,6 +5,7 @@ import Image from "next/image"
 import p1 from '../.././public/p1.jpeg'
 
 import styles from './singlePage.module.css'
+import Comments from "@/components/comments/Comments"
 
 const SinglePage = () => {
   return (
@@ -58,6 +59,9 @@ const SinglePage = () => {
               repellat quia consequuntur rerum repellendus nihil. Ipsam veniam 
               culpa veritatis aut.
             </p>
+          </div>
+          <div className={styles.comment}>
+            <Comments />
           </div>
         </div>
         <Menu />
