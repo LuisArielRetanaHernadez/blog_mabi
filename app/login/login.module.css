@@ -36,3 +36,15 @@
 .socialButton:nth-child(3) {
   background-color: #008DDA;
 }
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 50px 100px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .wrapper {
+    padding: 30px;
+  }
+}
