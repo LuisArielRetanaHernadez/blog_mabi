@@ -1,0 +1,48 @@
+.editor {
+  height: 700px;
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+.addButton {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--text-color);
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addButton {
+  border-color: #C6DCBA;
+}
+
+.add {
+  width: 100%;
+  background-color: var(--bg);
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  left: 50px;
+  z-index: 10;
+}
+
+.input {
+  padding: 50px;
+  font-size: 64px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #C6DCBA;
+}
+
+.textArea {
+  width: 100%;
+}

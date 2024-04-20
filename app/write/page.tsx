@@ -34,7 +34,7 @@ const Write = () => {
           </div>
         )}
 
-        <ReactQuill theme="bubble" value={value} onChange={setValue} placeholder="write stori"/>
+        <ReactQuill className={styles.textArea} theme="bubble" value={value} onChange={setValue} placeholder="write stori"/>
       </div>
     </div>
   )
