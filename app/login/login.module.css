@@ -47,4 +47,9 @@
   .wrapper {
     padding: 30px;
   }
+
+  .socialButton {
+    font-size: 14px;
+    font-weight: 400;
+  }
 }
