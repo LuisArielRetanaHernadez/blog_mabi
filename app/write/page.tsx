@@ -4,10 +4,14 @@ import Image from "next/image"
 
 import styles from "./write.module.css"
 
+import ReactQuill from "react-quill"
+import "react-quill/dist/quill.snow.css"
+
 import { useState } from "react"
 
 const Write = () => {
   const [open, setOpen] = useState(false)
+  const [value, setValue] = useState("")
 
   return (
     <div className={styles.container}>
@@ -29,6 +33,8 @@ const Write = () => {
             </button>
           </div>
         )}
+
+        <ReactQuill theme="bubble" value={value} onChange={setValue} placeholder="write stori"/>
       </div>
     </div>
   )
