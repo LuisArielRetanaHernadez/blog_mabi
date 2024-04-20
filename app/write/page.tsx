@@ -23,20 +23,20 @@ const Write = () => {
       <input className={styles.input} type="text" placeholder="Title" />
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(prev => !prev)}>
-          <Image src='' alt="image" width={16} height={16} />
+          <Image src={plus} alt="image" width={16} height={16} />
         </button>
         {open && (
           <div className={styles.add}>
-            <button className={styles.button}>
+            <button className={styles.addButton}>
               <Image src={plus} alt="image" width={16} height={16} />
             </button>
-            <button className={styles.button}>
+            <button className={styles.addButton}>
               <Image src={image} alt="image" width={16} height={16} />
             </button>
-            <button className={styles.button}>
+            <button className={styles.addButton}>
               <Image src={external} alt="image" width={16} height={16} />
             </button>
-            <button className={styles.button}>
+            <button className={styles.addButton}>
               <Image src={video} alt="image" width={16} height={16} />
             </button>
           </div>
@@ -44,6 +44,7 @@ const Write = () => {
 
         <ReactQuill className={styles.textArea} theme="bubble" value={value} onChange={setValue} placeholder="write stori"/>
       </div>
+      <button className={styles.publish}>Publish</button>
     </div>
   )
 
