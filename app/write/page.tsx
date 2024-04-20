@@ -7,6 +7,11 @@ import styles from "./write.module.css"
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 
+import image from "../../public/image.png"
+import external from "../../public/external.png"
+import plus from "../../public/plus.png"
+import video from "../../public/video.png"
+
 import { useState } from "react"
 
 const Write = () => {
@@ -23,13 +28,16 @@ const Write = () => {
         {open && (
           <div className={styles.add}>
             <button className={styles.button}>
-              <Image src='' alt="image" width={16} height={16} />
+              <Image src={plus} alt="image" width={16} height={16} />
             </button>
             <button className={styles.button}>
-              <Image src='' alt="image" width={16} height={16} />
+              <Image src={image} alt="image" width={16} height={16} />
             </button>
             <button className={styles.button}>
-              <Image src='' alt="image" width={16} height={16} />
+              <Image src={external} alt="image" width={16} height={16} />
+            </button>
+            <button className={styles.button}>
+              <Image src={video} alt="image" width={16} height={16} />
             </button>
           </div>
         )}
