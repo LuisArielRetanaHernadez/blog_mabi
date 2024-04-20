@@ -41,10 +41,12 @@
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 2-px;
+  gap: 20px;
 }
 
 .image {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
