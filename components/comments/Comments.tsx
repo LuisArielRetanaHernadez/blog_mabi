@@ -1,5 +1,7 @@
 import Image from "next/image"
 
+import p1 from "../../public/p1.jpeg"
+
 import Link from "next/link"
 
 import styles from "./comments.module.css"
@@ -20,7 +22,7 @@ const Comments = () => {
       <div className={styles.comments}>
         <div className={styles.comment}>
           <div className={styles.user}>
-            <Image className={styles.image} src='' alt="image p1" width={50} height={50} />
+            <Image className={styles.image} src={p1} alt="image p1" width={50} height={50} />
             <div className={styles.userInformation}>
               <span className={styles.username}>John Doe</span>
               <span className={styles.date}>01.01.2023</span>
