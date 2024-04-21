@@ -5,7 +5,7 @@ import styles from "./login.module.css"
 
 
 const Login = () => {
-  const [data, status] = useSession()
+  const { data, status } = useSession()
 
   return (
     <div className={styles.container}>
