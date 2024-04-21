@@ -86,6 +86,7 @@ model Post {
   userEmail String
   user User @relation(fields: [userEmail], references: [email])
   comments Comment[]
+  createAt DateTime @default(now())
 }
 
 
@@ -96,4 +97,5 @@ model Comment {
   post Post @relation(fields: [postSlug], references: [slug])
   userEmail String
   user User @relation(fields: [userEmail], references: [email])
+  createAt DateTime @default(now())
 }
