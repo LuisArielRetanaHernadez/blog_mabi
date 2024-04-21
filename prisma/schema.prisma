@@ -53,7 +53,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Posts Post[]
- 
+  Comments Comment[]
   @@map("users")
 }
  
@@ -83,6 +83,17 @@ model Post {
   views Int @default(0)
   catSlug String
   cat Category @relation(fields: [catSlug], references: [slug])
+  userEmail String
+  user User @relation(fields: [userEmail], references: [email])
+  comments Comment[]
+}
+
+
+model Comment {
+  id String @id @default(cuid()) @map("_id")
+  content String
+  postSlug String
+  post Post @relation(fields: [postSlug], references: [slug])
   userEmail String
   user User @relation(fields: [userEmail], references: [email])
 }
