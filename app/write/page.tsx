@@ -13,10 +13,25 @@ import plus from "../../public/plus.png"
 import video from "../../public/video.png"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
 
 const Write = () => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
+
+  const { status } = useSession()
+
+  const router = useRouter()
+
+  if (status === "unauthenticated") {
+    router.push("/login")
+  }
+
+  if (status === "loading") {
+    return <p>Loading...</p>
+  }
+
 
   return (
     <div className={styles.container}>
