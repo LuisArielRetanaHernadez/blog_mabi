@@ -16,7 +16,6 @@ const authOptions = {
     // ...add more providers here
   ],
 }
+const henler = NextAuth(authOptions)
 
-export { authOptions as GET, authOptions as POST}
-
-export default NextAuth(authOptions)
+export { henler as GET, henler as POST}
