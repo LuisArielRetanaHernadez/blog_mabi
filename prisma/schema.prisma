@@ -52,6 +52,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Posts Post[]
  
   @@map("users")
 }
@@ -63,4 +64,25 @@ model VerificationToken {
  
   @@unique([identifier, token])
   @@map("verificationtokens")
+}
+
+model Category {
+  id String @id @default(cuid()) @map("_id")
+  slug String @unique
+  title String
+  image String?
+  Posts Post[]
+}
+
+model Post {
+  id String @id @default(cuid()) @map("_id")
+  slug String @unique
+  title String
+  description String
+  image String?
+  views Int @default(0)
+  catSlug String
+  cat Category @relation(fields: [catSlug], references: [slug])
+  userEmail String
+  user User @relation(fields: [userEmail], references: [email])
 }
