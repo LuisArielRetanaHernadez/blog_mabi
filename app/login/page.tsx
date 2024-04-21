@@ -2,10 +2,21 @@
 import { signIn, useSession } from "next-auth/react"
 
 import styles from "./login.module.css"
+import { useRouter } from "next/router"
 
 
 const Login = () => {
   const { data, status } = useSession()
+
+  const router = useRouter()
+
+  if (status === "authenticated") {
+    router.push("/")
+  }
+
+  if (status === "loading") {
+    return <div className="">Loading...</div>
+  }
 
   return (
     <div className={styles.container}>
