@@ -10,6 +10,9 @@ export const GET = async (request, { params }) => {
     const post = await prisma.post.findUnique({
       where: {
         slug
+      },
+      inclue: { 
+        user: true
       }
     })
 
