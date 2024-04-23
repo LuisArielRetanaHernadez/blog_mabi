@@ -18,8 +18,8 @@ interface Post {
   createAt: Date 
 }
 
-const getData = async (): Promise<Post> => {
-  const res = await fetch("http://localhost:3000/aapi/posts", {
+const getData = async (page: number): Promise<Post> => {
+  const res = await fetch(`http://localhost:3000/aapi/posts?page=${page}`, {
     cache: "no-store"
   })
 
@@ -30,7 +30,9 @@ const getData = async (): Promise<Post> => {
   return res.json()
 }
 
-const CardList = () => {
+const CardList = ({ page }: any) => {
+
+  const data = getData(page)
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Post</h1>
