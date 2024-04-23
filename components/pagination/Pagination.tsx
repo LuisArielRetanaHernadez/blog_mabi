@@ -1,10 +1,27 @@
+import { useRouter } from "next/navigation"
 import styles from "./pagination.module.css"
 
-const Pagination = () => {
+interface Props {
+  page: number
+  hasPrev: boolean
+  hasNext: boolean
+}
+
+const Pagination = ({ page, hasPrev, hasNext }: Props) => {
+  const router = useRouter()
+
   return (
     <div className={styles.container}>
-      <button className={styles.button}>Preview</button>
-      <button className={styles.button}>Next</button>
+      <button 
+        className={styles.button}
+        disabled={!hasPrev}
+        onClick={() => router.push(`?page=${page - 1}`)}
+      >Preview</button>
+      <button 
+        className={styles.button} 
+        disabled={!hasNext}
+        onClick={() => router.push(`?page=${page + 1}`)}
+      >Next</button>
     </div>
   )
 }
