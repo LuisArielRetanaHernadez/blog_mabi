@@ -62,7 +62,7 @@ const SinglePage = async ({ params }: any) => {
         <div className={styles.post}>
           <div className={styles.description} dangerouslySetInnerHTML={{ __html: data?.description }} />
           <div className={styles.comment}>
-            <Comments />
+            <Comments slug={slug}/>
           </div>
         </div>
         <Menu />
