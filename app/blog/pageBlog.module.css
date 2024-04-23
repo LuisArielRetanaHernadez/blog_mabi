@@ -2,6 +2,7 @@
   padding: 5px 10px;
   color: white;
   text-align: center;
+  text-transform: capitalize;
   background-color: coral;
 }
 .content {
