@@ -18,7 +18,7 @@ interface Post {
   createAt: Date 
 }
 
-const getData = async (page: number): Promise<Post> => {
+const getData = async (page: number): Promise<Post[]> => {
   const res = await fetch(`http://localhost:3000/aapi/posts?page=${page}`, {
     cache: "no-store"
   })
@@ -30,17 +30,17 @@ const getData = async (page: number): Promise<Post> => {
   return res.json()
 }
 
-const CardList = ({ page }: any) => {
+const CardList = async ({ page }: any) => {
 
-  const data = getData(page)
+  const data = await getData(page)
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Post</h1>
       <div className={styles.posts}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {data?.map(post => (
+          <Card key={post.id} post={post}/>
+        )
+        )}
       </div>
       <Pagination />
     </div>
