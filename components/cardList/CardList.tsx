@@ -26,7 +26,7 @@ const getData = async (page: number): Promise<Post[]> => {
   return res
 }
 
-const CardList = async ({ page }: any) => {
+const CardList = async ({ page, cat }: {page: number, cat: string}) => {
   const data = await getData(page)
 
   const postsShow = 2
