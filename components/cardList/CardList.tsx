@@ -31,8 +31,13 @@ const getData = async (page: number): Promise<Post[]> => {
 }
 
 const CardList = async ({ page }: any) => {
-
   const data = await getData(page)
+
+  const postsShow = 2
+
+  const hasPrev = postsShow * (page - 1) > 0
+  const hasNext = postsShow * page + postsShow < data.length
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Post</h1>
@@ -42,7 +47,7 @@ const CardList = async ({ page }: any) => {
         )
         )}
       </div>
-      <Pagination />
+      <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext}/>
     </div>
   )
 }
