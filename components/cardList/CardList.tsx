@@ -18,8 +18,8 @@ interface Post {
   createAt: Date 
 }
 
-const getData = async (page: number): Promise<Post[]> => {
-  const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
+const getData = async (page: number, cat: string): Promise<Post[]> => {
+  const res = await fetch(`http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`, {
     cache: "no-store"
   }).then(res => res.json())
 
@@ -27,7 +27,7 @@ const getData = async (page: number): Promise<Post[]> => {
 }
 
 const CardList = async ({ page, cat }: {page: number, cat: string}) => {
-  const data = await getData(page)
+  const data = await getData(page, cat)
 
   const postsShow = 2
 
