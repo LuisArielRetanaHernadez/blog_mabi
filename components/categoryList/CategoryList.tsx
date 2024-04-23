@@ -9,7 +9,16 @@ import travel from "../../public/travel.png"
 
 import styles from "./categoryList.module.css"
 
-const CategoryList = () => {
+const getData = async () => {
+  const response = await fetch("/api/category", {
+    cache: "no-store",
+  })
+}
+
+const CategoryList = async () => {
+
+  const data = await getData()
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Popular Category</h1>
