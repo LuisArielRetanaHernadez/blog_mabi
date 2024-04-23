@@ -16,11 +16,12 @@ export const GET = async (request) => {
       prisma.posts.findMany({
         skip,
         take,
+      }),
+      prisma.posts.count({
         where: {
           ...(cat ? {category: cat} : null)
         }
       }),
-      prisma.posts.count(),
     ])
     return NextResponse.json(posts, {status: 2002})
   } catch (error) {
