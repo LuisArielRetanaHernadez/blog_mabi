@@ -19,15 +19,11 @@ interface Post {
 }
 
 const getData = async (page: number): Promise<Post[]> => {
-  const res = await fetch(`http://localhost:3000/aapi/posts?page=${page}`, {
+  const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
     cache: "no-store"
-  })
+  }).then(res => res.json())
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch data")
-  }
-
-  return res.json()
+  return res
 }
 
 const CardList = async ({ page }: any) => {
@@ -42,7 +38,7 @@ const CardList = async ({ page }: any) => {
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Post</h1>
       <div className={styles.posts}>
-        {data?.map(post => (
+        {data?.length ?? data?.map(post => (
           <Card key={post.id} post={post}/>
         )
         )}
