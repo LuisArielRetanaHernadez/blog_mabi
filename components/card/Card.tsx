@@ -18,8 +18,8 @@ const Card = ({key, post}: Props) => {
       </div>
       <div className={styles.textContainer}>
         <div className={styles.datail}>
-          <span className={styles.date}>{post.date}</span>
-          <span className={styles.category}>{post.title}</span>
+          <span className={styles.date}>{post.date.substring(0, 10)}</span>
+          <span className={styles.category}>{post.catSlug}</span>
         </div>
         <Link href="/">
           <h1>Ad, veritatis accusamus similique hic sapiente tempore? Veniam itaque magnam delectus reiciendis quo</h1>
