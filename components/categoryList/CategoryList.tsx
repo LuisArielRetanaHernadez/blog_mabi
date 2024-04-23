@@ -9,10 +9,20 @@ import travel from "../../public/travel.png"
 
 import styles from "./categoryList.module.css"
 
-const getData = async () => {
-  const response = await fetch("/api/category", {
+interface Category {
+  id: number
+  image: string
+  slug: string
+  title: string
+  Posts: []
+}
+
+const getData = async (): Promise<Category[]> => {
+  const response = await fetch("http://localhost:3000/api/category", {
     cache: "no-store",
-  })
+  }).then((res) => res.json())
+  
+  return response
 }
 
 const CategoryList = async () => {
@@ -23,22 +33,14 @@ const CategoryList = async () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Popular Category</h1>
       <div className={styles.categories}>
-        <Link className={`${styles.category} ${styles.style}`} href="/blog?cat=style">
-          <Image className={styles.image} src={style} alt="imagen style" width={32} height={32} />
-          style
-        </Link>
-        <Link className={`${styles.category} ${styles.fashion}`} href="/blog?cat=style">
-          <Image className={styles.image} src={fashion} alt="imagen style" width={32} height={32} />
-          fashin
-        </Link>
-        <Link className={`${styles.category} ${styles.food}`} href="/blog?cat=style">
-          <Image className={styles.image} src={food} alt="imagen style" width={32} height={32} />
-          food
-        </Link>
-        <Link className={`${styles.category} ${styles.travel}`} href="/blog?cat=style">
-          <Image className={styles.image} src={travel} alt="imagen style" width={32} height={32} />
-          travel
-        </Link>
+        {
+          data?.map(category => (
+          <Link key={category.id} className={`${styles.category} ${styles[category.slug]}`} href="/blog?cat=style">
+            <Image className={styles.image} src={category.image} alt="imagen style" width={32} height={32} />
+            {category.title}
+          </Link>
+          ))
+        }
       </div>
     </div>
   )
