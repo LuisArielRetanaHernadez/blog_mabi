@@ -1,13 +1,20 @@
+"use client"
+
 import Image from "next/image"
 
 import p1 from "../../public/p1.jpeg"
 
 import Link from "next/link"
 
-import styles from "./comments.module.css"
+import useSWR from "swr"
 
-const Comments = () => {
-  const status:string = "authenticated"
+import styles from "./comments.module.css"
+import { useSession } from "next-auth/react"
+
+const Comments = ({ postSlug }: any) => {
+  const { status } = useSession()
+
+  const { data, isLoading } = useSWR(`http://localhost:3000/api/comments/postSlug=${postSlug}`)
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
