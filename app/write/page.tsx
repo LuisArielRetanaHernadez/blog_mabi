@@ -37,10 +37,13 @@ const Write = () => {
   if (status === "loading") {
     return <p>Loading...</p>
   }
+
   const storage = getStorage(app);
+
   useEffect(() => {
     const upload = (filePost: File) => {
-      const storageRef = ref(storage, 'images/rivers.jpg');
+      const fileName = new Date().getTime() + filePost.name;
+      const storageRef = ref(storage, fileName);
 
       const uploadTask = uploadBytesResumable(storageRef, filePost);
 
