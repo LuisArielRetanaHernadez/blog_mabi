@@ -19,6 +19,7 @@ import { useSession } from "next-auth/react"
 const Write = () => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
+  const [file, setFile] = useState<File | null>(null)
 
   const { status } = useSession()
 
@@ -42,9 +43,19 @@ const Write = () => {
         </button>
         {open && (
           <div className={styles.add}>
-            <button className={styles.addButton}>
-              <Image src={plus} alt="image" width={16} height={16} />
-            </button>
+            <input 
+            type="file" 
+            id="image" 
+            onChange={e => setFile(e.target.files![0])} 
+            style={{ display: "none" }}
+            />
+
+            <label htmlFor="image">
+              <button className={styles.addButton}>
+                <Image src={plus} alt="image" width={16} height={16} />
+              </button>
+            </label>
+
             <button className={styles.addButton}>
               <Image src={image} alt="image" width={16} height={16} />
             </button>
