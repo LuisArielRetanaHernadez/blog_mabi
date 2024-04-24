@@ -27,6 +27,7 @@ const Write = () => {
   const [value, setValue] = useState("")
   const [title, setTitle] = useState<String>("")
   const [file, setFile] = useState<File | null>(null)
+  const [catSlug, setCatSlug] = useState<String>("")
   const [media, setMedia] = useState<String>("")
 
   const { status } = useSession()
@@ -52,9 +53,12 @@ const Write = () => {
         title,
         description: value,
         image: media,
-        slug: slugify(title)
+        slug: slugify(title),
+        catSlug: catSlug || "style"
       })
     })
+
+    const data = await res.json()
   }
 
   useEffect(() => {
@@ -115,7 +119,14 @@ const Write = () => {
   return (
     <div className={styles.container}>
       <input className={styles.input} type="text" placeholder="Title" onChange={e => setTitle(e.target.value)} />
-      <input type="text" placeholder="Category" />
+      <select name="" id="" onChange={e => setCatSlug(e.target.value)}>
+        <option value="style">style</option>
+        <option value="fashion">fashion</option>
+        <option value="food">food</option>
+        <option value="travel">travel</option>
+        <option value="culture">culture</option>
+        <option value="coding">coding</option>
+      </select>
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(prev => !prev)}>
           <Image src={plus} alt="image" width={16} height={16} />
