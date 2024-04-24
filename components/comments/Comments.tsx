@@ -10,8 +10,19 @@ import useSWR from "swr"
 
 import styles from "./comments.module.css"
 import { useSession } from "next-auth/react"
+import { useState } from "react"
 
-const fetcher = async (url: string) => {
+interface Comments {
+  id: number
+  content: String
+  postSlug: String
+  post: String
+  userEmail: String
+  user: any
+  createAt: Date
+}
+
+const fetcher = async (url: string): Promise<Comments[]> => {
   const res = await fetch(url)
 
   const data = await res.json()
@@ -21,44 +32,63 @@ const fetcher = async (url: string) => {
     throw error
   }
 
-  return res
+  return data
 }
 
 const Comments = ({ postSlug }: any) => {
+  const [desc, setDesc] = useState("")
   const { status } = useSession()
 
-  const { data, isLoading } = useSWR(`http://localhost:3000/api/comments/postSlug=${postSlug}`)
+  const { data, isLoading } = useSWR(`http://localhost:3000/api/comments/postSlug=${postSlug}`, fetcher)
+  
+  const handleSubmit = async () => {
+    await fetch("api/comments", {
+      method: "POST",
+      body: JSON.stringify({
+        desc,
+        postSlug
+      }),
+    })
+  }
+  
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Comments</h1>
       {status === "authenticated" ? (
         <div className={styles.write}>
-          <textarea className={styles.input} placeholder="comments..."></textarea>
-          <button className={styles.button}>Send</button>
+          <textarea
+           className={styles.input} 
+           placeholder="comments..."
+           onChange={(e) => setDesc(e.target.value)}
+           ></textarea>
+          <button className={styles.button} onClick={handleSubmit}>Send</button>
         </div>
       ) : (
         <Link href="/login">Login to write a comment</Link>
       )}
       <div className={styles.comments}>
-        <div className={styles.comment}>
-          <div className={styles.user}>
-            <Image className={styles.image} src={p1} alt="image p1" width={50} height={50} />
-            <div className={styles.userInformation}>
-              <span className={styles.username}>John Doe</span>
-              <span className={styles.date}>01.01.2023</span>
-            </div>
-          </div>
-          <p className={styles.description}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Sapiente nihil labore officiis dolor fuga porro obcaecati 
-            debitis quod quaerat. Doloribus aut hic ipsa ipsam vero natus 
-            autem, exercitationem adipisci nihil?
-            Quibusdam officia mollitia fugit nam accusamus, fugiat 
-            dolorum illum ad aliquid repellendus quaerat explicabo 
-            vel, repellat quae porro sint cum a eius? Modi, laudantium. 
-            Voluptate magni vitae reiciendis quaerat asperiores.
-          </p>
-        </div>
+      {isLoading
+          ? "loading"
+          : data?.map((item) => (
+              <div className={styles.comment} key={item.id}>
+                <div className={styles.user}>
+                  {item?.user?.image && (
+                    <Image
+                      src={item.user.image}
+                      alt=""
+                      width={50}
+                      height={50}
+                      className={styles.image}
+                    />
+                  )}
+                  <div className={styles.userInfo}>
+                    <span className={styles.username}>{item.user.name}</span>
+                    <span className={styles.date}>{item.createAt.toString()}</span>
+                  </div>
+                </div>
+                <p className={styles.desc}>{item.content}</p>
+              </div>
+            ))}
       </div>
     </div>
   )
