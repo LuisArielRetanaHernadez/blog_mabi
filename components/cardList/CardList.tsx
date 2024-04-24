@@ -26,8 +26,8 @@ const getData = async (page: number, cat: string): Promise<Post[]> => {
   return res
 }
 
-const CardList = async ({ page, cat }: {page: number, cat: string}) => {
-  const data = await getData(page, cat)
+const CardList = async ({ page, cat }: {page: number, cat?: string}) => {
+  const data = await getData(page, cat || "")
 
   const postsShow = 2
 
