@@ -13,7 +13,7 @@ export const GET = async (request) => {
   const skip = (page - 1) * take
 
   try {
-    const posts = await prisma.posts.$transaction([
+    const posts = await prisma.post.$transaction([
       prisma.posts.findMany({
         skip,
         take,
@@ -31,7 +31,7 @@ export const GET = async (request) => {
 }
 
 export const POST = async (request) => {
-  const session = getAuthSession()
+  const session = await getAuthSession()
 
   if (!session) {
     return NextResponse.json(JSON.stringify({message: 'Not Authenti'}, {status: 401}))
@@ -39,14 +39,17 @@ export const POST = async (request) => {
 
   try {
     const body = await request.json()
-    const post = await prisma.posts.create({
-      data: {
-        ...body,
-        userEmail: session.user.email
-      }
+
+    const dataPost = {
+      ...body,
+      userEmail: session.user.email
+    }
+    const post = await prisma.post.create({
+      data: dataPost
     })
+
     return NextResponse.json(post, {status: 202})
   } catch (error) {
-    return NextResponse.json(JSON.stringify({message: 'error'}))
+    return NextResponse.json({message: 'error', error})
   }
 }
