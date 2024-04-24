@@ -17,6 +17,11 @@
   background-color: var(--text-color);
 }
 
+.content {
+  display: flex;
+  gap: 20px;
+}
+
 .responsiveMenu {
   width: 100%;
   height: calc(100vh - 100px);

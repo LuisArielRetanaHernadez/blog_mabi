@@ -14,10 +14,10 @@ const AuthLink = () => {
     {status === "unauthenticated" ? (
       <Link href="/login" className={style.link}>login</Link>
     ) : (
-      <>
+      <div className={style.content}>
         <Link href="/write" className={style.link}>Write</Link>
         <span className={style.link}>Logout</span>
-      </>
+      </div>
     )}
     <div className={style.burger} onClick={() => setOpen(prev => !prev)}>
       <div className={style.line}></div>
