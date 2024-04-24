@@ -42,6 +42,29 @@ const Write = () => {
 
   const storage = getStorage(app);
 
+  const slugify = (str: String): String =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_-]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+  const handleSubmit = async () => {
+    const res = await fetch("/api/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title,
+        description: value,
+        image: media,
+        slug: slugify(title)
+      })
+    })
+  }
+
   useEffect(() => {
     const upload = (filePost: File) => {
       const fileName = new Date().getTime() + filePost.name;
