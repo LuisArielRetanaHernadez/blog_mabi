@@ -10,6 +10,8 @@ import "react-quill/dist/quill.snow.css"
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+import { app } from "@/utils/firabase"
+
 import image from "../../public/image.png"
 import external from "../../public/external.png"
 import plus from "../../public/plus.png"
@@ -35,10 +37,9 @@ const Write = () => {
   if (status === "loading") {
     return <p>Loading...</p>
   }
-
+  const storage = getStorage(app);
   useEffect(() => {
     const upload = (filePost: File) => {
-      const storage = getStorage();
       const storageRef = ref(storage, 'images/rivers.jpg');
 
       const uploadTask = uploadBytesResumable(storageRef, filePost);
