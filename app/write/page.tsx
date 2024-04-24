@@ -24,7 +24,9 @@ import { useSession } from "next-auth/react"
 const Write = () => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
+  const [title, setTitle] = useState<String>("")
   const [file, setFile] = useState<File | null>(null)
+  const [media, setMedia] = useState<String>("")
 
   const { status } = useSession()
 
