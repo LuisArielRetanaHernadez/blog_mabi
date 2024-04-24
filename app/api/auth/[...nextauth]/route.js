@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth, { getServerSession } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 
@@ -23,3 +23,6 @@ const authOptions = {
 const henler = NextAuth(authOptions)
 
 export { henler as GET, henler as POST}
+
+export const getAuthSession = () => getServerSession(authOptions)
+
