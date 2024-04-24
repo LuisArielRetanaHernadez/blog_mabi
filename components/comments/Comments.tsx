@@ -11,6 +11,19 @@ import useSWR from "swr"
 import styles from "./comments.module.css"
 import { useSession } from "next-auth/react"
 
+const fetcher = async (url: string) => {
+  const res = await fetch(url)
+
+  const data = await res.json()
+
+  if (!res.ok) {
+    const error = new Error(data.message)
+    throw error
+  }
+
+  return res
+}
+
 const Comments = ({ postSlug }: any) => {
   const { status } = useSession()
 
