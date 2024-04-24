@@ -39,7 +39,7 @@ const Comments = ({ postSlug }: any) => {
   const [desc, setDesc] = useState("")
   const { status } = useSession()
 
-  const { data, isLoading } = useSWR(`http://localhost:3000/api/comments/postSlug=${postSlug}`, fetcher)
+  const { data, mutate, isLoading } = useSWR(`http://localhost:3000/api/comments/postSlug=${postSlug}`, fetcher)
   
   const handleSubmit = async () => {
     await fetch("api/comments", {
@@ -49,6 +49,7 @@ const Comments = ({ postSlug }: any) => {
         postSlug
       }),
     })
+    mutate()
   }
   
   return (
