@@ -87,7 +87,7 @@ const Write = () => {
 
   return (
     <div className={styles.container}>
-      <input className={styles.input} type="text" placeholder="Title" />
+      <input className={styles.input} type="text" placeholder="Title" onChange={e => setTitle(e.target.value)} />
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(prev => !prev)}>
           <Image src={plus} alt="image" width={16} height={16} />
