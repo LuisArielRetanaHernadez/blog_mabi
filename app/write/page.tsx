@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 
@@ -20,7 +21,7 @@ import video from "../../public/video.png"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
-
+  const storage = getStorage(app);
 const Write = () => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
@@ -32,15 +33,6 @@ const Write = () => {
 
   const router = useRouter()
 
-  if (status === "unauthenticated") {
-    router.push("/login")
-  }
-
-  if (status === "loading") {
-    return <p>Loading...</p>
-  }
-
-  const storage = getStorage(app);
 
   const slugify = (str: String): String =>
     str
@@ -66,6 +58,7 @@ const Write = () => {
   }
 
   useEffect(() => {
+
     const upload = (filePost: File) => {
       const fileName = new Date().getTime() + filePost.name;
       const storageRef = ref(storage, fileName);
@@ -103,9 +96,20 @@ const Write = () => {
         }
       );
     }
-
-    file && upload(file)
+    
+    if (file) {
+      upload(file)
+    }
   }, [file])
+
+  if (status === "unauthenticated") {
+    router.push("/login")
+  }
+
+  if (status === "loading") {
+    return <p>Loading...</p>
+  }
+
 
 
   return (
@@ -145,7 +149,7 @@ const Write = () => {
 
         <ReactQuill className={styles.textArea} theme="bubble" value={value} onChange={setValue} placeholder="write stori"/>
       </div>
-      <button className={styles.publish}>Publish</button>
+      <button className={styles.publish} onClick={handleSubmit}>Publish</button>
     </div>
   )
 
