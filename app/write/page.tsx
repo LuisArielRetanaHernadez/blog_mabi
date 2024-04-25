@@ -136,19 +136,20 @@ const Write = () => {
             <input 
             type="file" 
             id="image" 
-            onChange={e => setFile(e.target.files![0])} 
+            onChange={e => {
+              if (e.target.files) {
+                setFile(e.target.files[0])
+              }
+            }} 
             style={{ display: "none" }}
             />
 
-            <label htmlFor="image">
-              <button className={styles.addButton}>
-                <Image src={plus} alt="image" width={16} height={16} />
-              </button>
-            </label>
-
-            <button className={styles.addButton}>
-              <Image src={image} alt="image" width={16} height={16} />
+            <button className={styles.addButton}>        
+              <label htmlFor="image">
+                <Image src={image} alt="image" width={16} height={16} />
+              </label>
             </button>
+
             <button className={styles.addButton}>
               <Image src={external} alt="image" width={16} height={16} />
             </button>
