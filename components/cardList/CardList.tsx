@@ -32,18 +32,18 @@ const getData = async (page: number, cat: string): Promise<Data> => {
 }
 
 const CardList = async ({ page, cat }: {page: number, cat?: string}) => {
-  const data = await getData(page, cat || "")
+  const {posts, count} = await getData(page, cat || "")
 
   const postsShow = 2
 
   const hasPrev = postsShow * (page - 1) > 0
-  const hasNext = postsShow * page + postsShow < data.posts.length
+  const hasNext = postsShow * (page - postsShow) + postsShow < count
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Post</h1>
       <div className={styles.posts}>
-        {data?.count ? data?.posts?.map(post => (
+        {count ? posts?.map(post => (
           <Card key={post.id} post={post}/>
         )) : (
           <h3>No posts</h3>
