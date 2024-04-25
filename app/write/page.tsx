@@ -7,7 +7,7 @@ import Image from "next/image"
 import styles from "./write.module.css"
 
 import ReactQuill from "react-quill"
-import "react-quill/dist/quill.snow.css"
+import "react-quill/dist/quill.bubble.css";
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
@@ -159,7 +159,13 @@ const Write = () => {
           </div>
         )}
 
-        <ReactQuill className={styles.textArea} theme="bubble" value={value} onChange={setValue} placeholder="write stori"/>
+        <ReactQuill 
+          className={styles.textArea} 
+          theme="bubble" 
+          value={value} 
+          onChange={setValue} 
+          placeholder="write stori"
+        />
       </div>
       <button className={styles.publish} onClick={handleSubmit}>Publish</button>
     </div>
