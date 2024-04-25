@@ -13,20 +13,25 @@ export const GET = async (request) => {
   const skip = (page - 1) * take
 
   try {
-    const posts = await prisma.post.$transaction([
-      prisma.posts.findMany({
+
+    const [posts, count] = await prisma.$transaction([
+      prisma.post.findMany({
         skip,
         take,
-      }),
-      prisma.posts.count({
         where: {
-          ...(cat ? {category: cat} : null)
+          ...(cat && {catSlug: cat})
         }
       }),
-    ])
-    return NextResponse.json(posts, {status: 2002})
+      prisma.post.count({
+        where: {
+          ...(cat && {catSlug: cat})
+        }
+      })
+    ]);
+
+    return NextResponse.json({posts, count}, {status: 202})
   } catch (error) {
-    return NextResponse.json(JSON.stringify({message: 'error'}))
+    return NextResponse.json({message: 'error', error})
   }
 }
 
