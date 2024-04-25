@@ -119,7 +119,7 @@ const Write = () => {
   return (
     <div className={styles.container}>
       <input className={styles.input} type="text" placeholder="Title" onChange={e => setTitle(e.target.value)} />
-      <select name="" id="" onChange={e => setCatSlug(e.target.value)}>
+      <select className={styles.select} name="" id="" onChange={e => setCatSlug(e.target.value)}>
         <option value="style">style</option>
         <option value="fashion">fashion</option>
         <option value="food">food</option>
