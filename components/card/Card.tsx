@@ -21,14 +21,14 @@ const Card = ({key, post}: Props) => {
 
       <div className={styles.textContainer}>
         <div className={styles.datail}>
-          <span className={styles.date}>{post.date.substring(0, 10)}</span>
+          <span className={styles.date}>{post.createdAt.substring(0, 10)}</span>
           <span className={styles.category}>{post.catSlug}</span>
         </div>
         <Link href={`/posts/${post.slug}`}>
           <h1>{post.title}</h1>
         </Link> 
         <p className={styles.description}>
-          {post.description.substring(0, 10)}
+          {post.description}
         </p>
         <Link className={styles.link} href={`/posts/${post.slug}`}>Read More</Link>
       </div>
