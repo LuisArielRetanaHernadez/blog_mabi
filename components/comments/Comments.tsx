@@ -39,13 +39,13 @@ const Comments = ({ postSlug }: any) => {
   const [desc, setDesc] = useState("")
   const { status } = useSession()
 
-  const { data, mutate, isLoading } = useSWR(`http://localhost:3000/api/comments/postSlug=${postSlug}`, fetcher)
-  
+  const { data, mutate, isLoading } = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, fetcher)
+
   const handleSubmit = async () => {
-    await fetch("api/comments", {
+    await fetch("http://localhost:3000/api/comments", {
       method: "POST",
       body: JSON.stringify({
-        desc,
+        content: desc,
         postSlug
       }),
     })
@@ -70,7 +70,7 @@ const Comments = ({ postSlug }: any) => {
       <div className={styles.comments}>
       {isLoading
           ? "loading"
-          : data?.map((item) => (
+          : data?.length ? data?.map((item) => (
               <div className={styles.comment} key={item.id}>
                 <div className={styles.user}>
                   {item?.user?.image && (
@@ -89,7 +89,7 @@ const Comments = ({ postSlug }: any) => {
                 </div>
                 <p className={styles.desc}>{item.content}</p>
               </div>
-            ))}
+            )): (<h3>Sin Comentarios</h3>)}
       </div>
     </div>
   )
