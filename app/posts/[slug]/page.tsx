@@ -2,7 +2,7 @@ import Menu from "@/components/menu/Menu"
 
 import Image from "next/image"
 
-import p1 from '../.././public/p1.jpeg'
+import p1 from '../../../public/p1.jpeg'
 
 import styles from './singlePage.module.css'
 import Comments from "@/components/comments/Comments"
@@ -19,7 +19,7 @@ interface Post {
   userEmail: any 
   user: any
   comments: any 
-  createAt: Date 
+  createdAt: Date 
 }
 
 const getData = async (slug: string): Promise<Post> => {
@@ -43,18 +43,18 @@ const SinglePage = async ({ params }: any) => {
           <div className={styles.user}>
             {data.image && (
               <div className={styles.userImageContainer}>
-                <Image className={styles.avatar} src={data.image} alt="image p1" fill/>
+                <Image className={styles.avatar} src={data.user.image} alt="image p1" fill/>
               </div>
             )}
             <div className={styles.userTextContainer}>
               <span className={styles.username}>{data.user.name}</span>
-              <span className={styles.date}>{data.createAt.toString()}</span>
+              <span className={styles.date}>{data.createdAt.toString()}</span>
             </div>
           </div>
         </div>
         { data.image && (
           <div className={styles.imageContainer}> 
-            <Image className={styles.image} src={p1} alt="imge p1" fill />
+            <Image className={styles.image} src={data.image} alt="imge p1" fill />
           </div>
         )}
       </div>
