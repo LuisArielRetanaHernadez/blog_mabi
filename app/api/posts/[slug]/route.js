@@ -9,19 +9,19 @@ export const GET = async (request, { params }) => {
 
     const post = await prisma.post.update({
       where: {
-        slug
+        slug: slug
       },
       data: {
         views: {
           increment: 1
         }
       },
-      inclue: { 
+      include: { 
         user: true
       }
     })
 
-    return NextResponse.json(post, {status: 2002})
+    return NextResponse.json(post, {status: 202})
   } catch (error) {
     return NextResponse.json(JSON.stringify({message: 'error'}))
   }
