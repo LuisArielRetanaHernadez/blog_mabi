@@ -10,7 +10,7 @@ import useSWR from "swr"
 
 import styles from "./comments.module.css"
 import { useSession } from "next-auth/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface Comments {
   id: number
@@ -51,6 +51,10 @@ const Comments = ({ postSlug }: any) => {
     })
     mutate()
   }
+
+  useEffect(() =>{
+    mutate()
+  }, [])
   
   return (
     <div className={styles.container}>
@@ -83,8 +87,8 @@ const Comments = ({ postSlug }: any) => {
                     />
                   )}
                   <div className={styles.userInfo}>
-                    <span className={styles.username}>{item.user.name}</span>
-                    <span className={styles.date}>{item.createAt.toString()}</span>
+                    <span className={styles.username}>{item.user.name} - </span>
+                    <span className={styles.date}>{item.createAt.toString().substring(0,10)}</span>
                   </div>
                 </div>
                 <p className={styles.desc}>{item.content}</p>
