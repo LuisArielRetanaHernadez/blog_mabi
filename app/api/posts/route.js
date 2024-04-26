@@ -58,19 +58,3 @@ export const POST = async (request) => {
     return NextResponse.json({message: 'error', error})
   }
 }
-
-// crear ruta api para obtener los posts con mayor visualizacion
-export const GET_TOP_VIEW = async (request) => {
-  try {
-    const posts = await prisma.post.findMany({
-      orderBy: {
-        views: 'desc'
-      },
-      take: 5
-    })
-
-    return NextResponse.json(posts, {status: 202})
-  } catch (error) {
-    return NextResponse.json({message: 'error', error})
-  }
-}
