@@ -53,6 +53,9 @@
 .category.food {
   background-color: #ff0858;
 }
+.category.coding {
+  background-color: #ff4858;
+}
 
 .postTitle {
   font-size: 18px;
