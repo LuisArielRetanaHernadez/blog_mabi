@@ -14,82 +14,54 @@ interface Props {
   withImage: boolean
 }
 
-const MenuPosts = ({ withImage }: Props ) => {
+interface Post {
+  id: number
+  slug: string
+  title: string
+  description: string
+  image: string
+  views: number
+  catSlug: string
+  cat: any 
+  userEmail: any 
+  user: any
+  comments: any 
+  createAt: Date
+}
+
+// crear la funcion para obtener a los posts con mayor visualizacion
+const getData = async (): Promise<Post[]> => {
+  const res = await fetch('http://localhost:3000/api/posts/views/', {
+    cache: 'no-store'
+  })
+
+  return await res.json()
+}
+
+const MenuPosts = async ({ withImage }: Props ) => {
+  const posts = await getData()
   return (
     <div className={styles.items}>
 
-    <Link className={styles.item} href="/">
-      { withImage &&
-        <div className={styles.imageContainer}>
-          <Image className={styles.image} src={p1} alt="iamge p1" fill/>
-        </div>
-      }
-      <div className={styles.textContainer}>
-        <span className={`${styles.category} ${styles.travel}`}>Travel</span>
-        <h3 className={styles.postTitle}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit
-        </h3>
-        <div className={styles.detail}>
-          <span className={styles.username}>Jhon Doe</span>
-          <span className={styles.date}>10.03.2023</span>
-        </div>
-      </div>
-    </Link>
-
-    <Link className={styles.item} href="/">
-      { withImage &&
+    {posts.length && posts?.map(post => (
+      <Link className={styles.item} href="/" key={post.id}>
+        { withImage &&
           <div className={styles.imageContainer}>
-          <Image className={styles.image} src={fashion} alt="iamge p1" fill/>
+            <Image className={styles.image} src={post.image} alt="iamge p1" fill/>
+          </div>
+        }
+        <div className={styles.textContainer}>
+          <span className={`${styles.category} ${styles[post.catSlug]}`}>{post.catSlug}</span>
+          <h3 className={styles.postTitle}>
+            {post.title}
+          </h3>
+          <div className={styles.detail}>
+            <span className={styles.username}>Jhon Doe</span>
+            <span className={styles.date}>10.03.2023</span>
+          </div>
         </div>
-      }
-
-      <div className={styles.textContainer}>
-        <span className={`${styles.category} ${styles.fashion}`}>fashion</span>
-        <h3 className={styles.postTitle}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit
-        </h3>
-        <div className={styles.detail}>
-          <span className={styles.username}>Jhon Doe</span>
-          <span className={styles.date}>10.03.2023</span>
-        </div>
-      </div>
     </Link>
-
-    <Link className={styles.item} href="/">
-      { withImage &&
-          <div className={styles.imageContainer}>
-          <Image className={styles.image} src={culture} alt="iamge p1" fill/>
-        </div> 
-      }
-      <div className={styles.textContainer}>
-        <span className={`${styles.category} ${styles.culture}`}>culture</span>
-        <h3 className={styles.postTitle}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit
-        </h3>
-        <div className={styles.detail}>
-          <span className={styles.username}>Jhon Doe</span>
-          <span className={styles.date}>10.03.2023</span>
-        </div>
-      </div>
-    </Link>
-
-    <Link className={styles.item} href="/">
-      { withImage &&
-        <div className={styles.imageContainer}>
-          <Image className={styles.image} src={food} alt="iamge p1" fill/>
-        </div>
-      }
-      <div className={styles.textContainer}>
-        <span className={`${styles.category} ${styles.food}`}>food</span>
-        <h3 className={styles.postTitle}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit
-        </h3>
-        <div className={styles.detail}>
-          <span className={styles.username}>Jhon Doe</span>
-          <span className={styles.date}>10.03.2023</span>
-        </div>
-      </div>
-    </Link>
+    ))}
 
   </div>
   )
