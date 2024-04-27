@@ -14,6 +14,11 @@ import "react-quill/dist/quill.bubble.css";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage"
 import { app } from "@/utils/firabase"
 
+import image from "../../public/image.png"
+import external from "@/public/external.png"
+import plus from "@/public/plus.png"
+import video from "@/public/video.png"
+
 
 import styles from "./createPost.module.css"
 
@@ -109,7 +114,7 @@ const CreatePost = () => {
       </select>
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(prev => !prev)}>
-          <Image src='' alt="image" width={16} height={16} />
+          <Image src={plus} alt="image" width={16} height={16} />
         </button>
         {open && (
           <div className={styles.add}>
@@ -126,15 +131,15 @@ const CreatePost = () => {
 
             <button className={styles.addButton}>        
               <label htmlFor="image">
-                <Image src='' alt="image" width={16} height={16} />
+                <Image src={image} alt="image" width={16} height={16} />
               </label>
             </button>
 
             <button className={styles.addButton}>
-              <Image src='' alt="image" width={16} height={16} />
+              <Image src={external} alt="image" width={16} height={16} />
             </button>
             <button className={styles.addButton}>
-              <Image src='' alt="image" width={16} height={16} />
+              <Image src={video} alt="image" width={16} height={16} />
             </button>
           </div>
         )}
