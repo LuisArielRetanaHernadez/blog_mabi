@@ -1,23 +1,35 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 
+import { useEffect, useState } from "react"
+
+import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
+
 import Image from "next/image"
 
-import styles from "./createPost.module.css"
-import { useEffect, useState } from "react"
 import ReactQuill from "react-quill"
+import "react-quill/dist/quill.bubble.css";
+
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage"
 import { app } from "@/utils/firabase"
 
+
+import styles from "./createPost.module.css"
+
 const categories = ["style", "fashion", "food", "travel", "culture", "coding"]
 
-const createPost = async () => {
+const CreatePost = () => {
   const [open, setOpen] = useState<Boolean>(false)
   const [value, setValue] = useState<String>("")
   const [title, setTitle] = useState<String>("")
   const [file, setFile] = useState<File | null>(null)
   const [catSlug, setCatSlug] = useState<String>("")
   const [media, setMedia] = useState<String>("")
+
+  const { status } = useSession()
+
+  const router = useRouter()
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -53,6 +65,14 @@ const createPost = async () => {
     }
   }, [file])
 
+  if (status === "unauthenticated") {
+    router.push("/login")
+  }
+
+  if (status === "loading") {
+    return <p>Loading...</p>
+  }
+
   const slugify = (str: String): String =>
     str
       .toLowerCase()
@@ -62,7 +82,7 @@ const createPost = async () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
-    const res = await fetch("/api/posts", {
+    await fetch("/api/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -132,4 +152,4 @@ const createPost = async () => {
   )
 }
 
-export default createPost
+export default CreatePost
