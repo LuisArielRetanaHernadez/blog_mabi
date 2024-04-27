@@ -1,5 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client"
+
+import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
 
 import "./globals.css";
 import styles from "./homepage.module.css";
@@ -10,8 +12,16 @@ import CardList from "@/components/cardList/CardList";
 import Menu from "@/components/menu/Menu";
 
 export default function Home({ searchParams }: any) {
+
+  const { status } = useSession()
+
+  const router = useRouter()
   
   const page = parseInt(searchParams?.page || "1");
+
+  if (status === "unauthenticated") {
+    router.push("/login")
+  }
 
   return (
     <div className="container">
