@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-hooks/rules-of-hooks */
-"use client"
+'use client'
 
 import Image from "next/image"
 
@@ -21,7 +19,7 @@ import video from "../../public/video.png"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
-  const storage = getStorage(app);
+
 const Write = () => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
@@ -33,7 +31,6 @@ const Write = () => {
   const { status } = useSession()
 
   const router = useRouter()
-
 
   const slugify = (str: String): String =>
     str
@@ -58,27 +55,18 @@ const Write = () => {
       })
     })
 
-    const data = await res.json()
   }
 
   useEffect(() => {
-
+    const storage = getStorage(app);
     const upload = (filePost: File) => {
       const fileName = new Date().getTime() + filePost.name;
       const storageRef = ref(storage, fileName);
 
       const uploadTask = uploadBytesResumable(storageRef, filePost);
 
-      // Register three observers:
-      // 1. 'state_changed' observer, called any time the state changes
-      // 2. Error observer, called on failure
-      // 3. Completion observer, called on successful completion
       uploadTask.on('state_changed', 
         (snapshot) => {
-          // Observe state change events such as progress, pause, and resume
-          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
           switch (snapshot.state) {
             case 'paused':
               console.log('Upload is paused');
@@ -88,12 +76,8 @@ const Write = () => {
               break;
           }
         }, 
-        (error) => {
-          // Handle unsuccessful uploads
-        }, 
+        (error) => {}, 
         () => {
-          // Handle successful uploads on complete
-          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setMedia(downloadURL)
           });
@@ -113,8 +97,6 @@ const Write = () => {
   if (status === "loading") {
     return <p>Loading...</p>
   }
-
-
 
   return (
     <div className={styles.container}>
